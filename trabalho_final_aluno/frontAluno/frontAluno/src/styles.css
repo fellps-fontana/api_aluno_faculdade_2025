@@ -1,0 +1,53 @@
+/* Estilos gerais do corpo da página para remover margens e padding padrão */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Estilos da barra de navegação */
+.navbar {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Se a navbar é fixa no topo, adicione: */
+    /* position: sticky; top: 0; z-index: 1000; */
+}
+
+/* Estilos da logo da esquerda */
+.logo-left img {
+    height: 40px;
+}
+
+/* Estilos das abas centralizadas na navbar */
+.nav-links-center {
+    display: flex;
+    gap: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-item {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.nav-item.active {
+    border-bottom: 2px solid rgb(233, 0, 0);
+}
+
+.nav-item:hover {
+    background-color: #575757;
+}
+

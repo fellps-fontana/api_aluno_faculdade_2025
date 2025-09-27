@@ -1,0 +1,57 @@
+/* src/app/components/home-component/home-component.css */
+
+.page-center-content {
+    /* 🌟 SOLUÇÃO DA ALTURA 🌟
+       Usa a altura total da tela (Viewport Height) para garantir o alinhamento vertical. */
+    height: 100vh;
+    width: 100%; 
+
+    /* Regras de Flexbox para Centralização e Layout Vertical */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center; 
+    
+    /* 🌟 COMPENSAÇÃO DO HEADER 🌟
+       Empurra o conteúdo para baixo, abaixo do cabeçalho fixo. */
+    padding-top: 50px; 
+    text-align: center;
+}
+
+/* Estilo do Logo Central */
+.logo-center {
+    height: 80px;
+    margin-bottom: 25px; /* Espaçamento abaixo do logo */
+}
+
+/* Estilo do Texto Principal */
+.page-center-text {
+    font-size: 2em; /* Reduz um pouco o tamanho para quebrar menos */
+    font-weight: bold;
+    color: #333;
+    
+    /* 🌟 SOLUÇÃO DA QUEBRA DE LINHA 🌟
+       Define uma largura máxima para o texto, permitindo o fluxo normal. */
+    max-width: 600px; 
+    
+    margin-bottom: 30px; 
+    line-height: 1.3; /* Melhor legibilidade entre linhas */
+}
+
+/* Estilos do botão de se inscrever */
+.subscribe-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: #e50914;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.subscribe-btn:hover {
+    background-color: #b2070f;
+    transform: scale(1.05);
+}

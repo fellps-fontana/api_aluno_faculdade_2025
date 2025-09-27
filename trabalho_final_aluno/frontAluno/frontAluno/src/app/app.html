@@ -1,0 +1,26 @@
+<header class="navbar">
+    <div class="logo-left">
+        <img src="assets/uno-logo.png" alt="Logo do Curso de UNO">
+    </div>
+
+<div class="nav-links-center">
+        <a 
+            routerLink="/home" 
+            routerLinkActive="active" 
+            [routerLinkActiveOptions]="{exact: true}" 
+            class="nav-item">
+            Home
+        </a>
+        
+        <a 
+            routerLink="/alunos" 
+            routerLinkActive="active" 
+            class="nav-item">
+            Alunos
+        </a>
+    </div>
+</header>
+  
+<div class="page-center-content">
+    <router-outlet></router-outlet>
+</div>
