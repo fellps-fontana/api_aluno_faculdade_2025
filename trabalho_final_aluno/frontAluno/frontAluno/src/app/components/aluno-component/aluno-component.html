@@ -1,0 +1,102 @@
+<div class="container-fluid p-3"> <!-- Wrapper principal adicionado para estabilidade -->
+    <h2 class="mb-3">Gestão de Alunos</h2>
+
+    @if (loading){<div class="alert alert-info">Carregando...</div>}
+    @if (erro){<div class="alert alert-danger">{{ erro }}</div>} 
+    @if (sucesso){<div class="alert alert-success">{{ sucesso }}</div>} 
+
+
+    <div class="row g-2 align-items-center mb-3">
+        <div class="col-sm-6 col-md-3">
+            <input class="form-control"
+                [(ngModel)]="novoAluno.nome"
+                placeholder="Nome Do Aluno"
+            >
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <input class="form-control"
+                [(ngModel)]="novoAluno.curso"
+                placeholder="Curso Aluno"
+            >
+        </div>
+        <div class="col-sm-6 col-md-3">
+            <input class="form-control"
+                [(ngModel)]="novoAluno.telefone"
+                placeholder="Telefone Aluno"
+            >
+        </div>
+        <div class="col-sm-6 col-md-2">
+            <input class="form-control"
+                type="number"
+                [(ngModel)]="novoAluno.idade"
+                placeholder="Idade"
+            >
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-primary" 
+                (click)="adicionar()" 
+                [disabled]="loading"
+            >Adicionar</button>
+        </div>
+    </div>
+
+    <ul class="list-group mb-3">
+        @for (a of alunos; track a.id) {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span> 
+                    {{a.nome}} - {{a.curso}} - {{a.telefone}} ({{a.idade}} anos)
+                </span>
+
+                <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm btn-warning"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editModal"
+                        (click)="iniciarEdicao(a)" 
+                        [disabled]="loading"
+                        >Editar</button>
+                    
+                    <button class="btn btn-sm btn-outline-danger" 
+                        (click)="remover(a.id)"
+                        [disabled]="loading"
+                    >Remover</button>
+                </div>
+
+            </li>
+        }
+    </ul>
+
+    @if (alunos.length === 0 && !loading) {
+        <div class="alert alert-info">Nenhum Aluno cadastrado</div>
+    }
+
+    <div class="modal fade" id="editModal" tabindex="1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @if(alunoEmEdicao){
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Aluno: {{ alunoEmEdicao.nome }}</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" 
+                            (click)="alunoEmEdicao = null"
+                        ></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <input class="form-control mb-2" [(ngModel)]="alunoEmEdicao.nome" placeholder="Nome">
+                        <input class="form-control mb-2" [(ngModel)]="alunoEmEdicao.curso" placeholder="Curso">
+                        <input class="form-control mb-2" [(ngModel)]="alunoEmEdicao.telefone" placeholder="Telefone">
+                        <input class="form-control mb-2" type="number" [(ngModel)]="alunoEmEdicao.idade" placeholder="Idade"> 
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-bs-dismiss="modal" (click)="alunoEmEdicao = null">Cancelar</button>
+                        <button class="btn btn-primary" 
+                            (click)="salvarEdicao()" 
+                            data-bs-dismiss="modal"
+                            [disabled]="loading"
+                        >Salvar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
